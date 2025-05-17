@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->withPersonalTeam()->create();
         $this->call([
             UserSeeder::class,
+            BoardSeeder::class,
+            ColumnSeeder::class,
+            CardSeeder::class,
         ]);
     }
 }
