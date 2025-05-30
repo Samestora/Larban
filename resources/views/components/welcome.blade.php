@@ -21,7 +21,7 @@
     <div>
         <div class="flex items-center">
             <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                <a href="{{ route('boards') }}">View all boards</a>
+                <a href="{{ route('boards.show') }}">View all boards</a>
             </h2>
         </div>
 

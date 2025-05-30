@@ -17,8 +17,10 @@ class ColumnSeeder extends Seeder
     public function run(): void
     {
         Board::all()->each(function ($board) {
-            Column::factory(3)->create([
-                'board_id' => $board->id,
+            Column::insert([
+                ['name' => 'Completed', 'position' => 0, 'board_id' => $board->id],
+                ['name' => 'On Going', 'position' => 1, 'board_id' => $board->id],
+                ['name' => 'Upcoming', 'position' => 2, 'board_id' => $board->id],
             ]);
         });
     }

@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Livewire\Board;
+namespace App\Livewire;
 
 use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class BoardView extends Component
+class ShowBoard extends Component
 {
     public Board $board;
     public $columns;
@@ -19,6 +20,11 @@ class BoardView extends Component
 
     public function mount(Board $board)
     {
+        /**  @var App\Model\User */
+        $user = Auth::user();
+        if (!$user->can('view', $board)) {
+            abort(403);
+        }
         $this->board = $board;
         $this->loadColumns();
     }
@@ -36,6 +42,13 @@ class BoardView extends Component
         $this->loadColumns();
     }
 
+    // column or card Creation Update or Deletion
+    #[\Livewire\Attributes\On('refresh-board')]
+    public function refreshBoard()
+    {
+        $this->board->load('columns.cards');
+    }
+
     public function updateColumnPositions($orderedColumnIds)
     {
         foreach ($orderedColumnIds as $position => $columnId) {
@@ -45,6 +58,7 @@ class BoardView extends Component
     }
     public function render()
     {
-        return view('board.board-view');
+
+        return view('board.show');
     }
 }

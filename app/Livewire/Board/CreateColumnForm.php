@@ -4,10 +4,11 @@ namespace App\Livewire\Board;
 
 use App\Models\Board;
 use Livewire\Component;
+use Mary\Traits\Toast;
 
 class CreateColumnForm extends Component
 {
-
+    use Toast;
     public $board;
     public $name = '';
 
@@ -29,9 +30,10 @@ class CreateColumnForm extends Component
         ]);
 
         $this->name = '';
-
-        $this->emit('columnAdded'); // for potential reactivity
+        $this->success('Column added successfully!');
+        $this->dispatch('refresh-board');
     }
+
 
     public function render()
     {
