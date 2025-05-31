@@ -33,5 +33,4 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session')])
         Route::get('/{board}', ShowBoard::class)->name('board.show');
         Route::get('/cards/{card}', ShowCard::class)->name('card.show');
         Route::post('/cards/sort', [CardController::class, 'sort'])->name('card.sort');
-        Route::put('/cards/{card}', [CardController::class, 'update'])->name('card.update');
     });

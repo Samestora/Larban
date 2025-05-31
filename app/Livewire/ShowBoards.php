@@ -11,6 +11,7 @@ class ShowBoards extends Component
 {
     public $boards;
     public $teams;
+    public $breadcrumbs;
 
     public function mount(): void
     {
@@ -22,7 +23,10 @@ class ShowBoards extends Component
 
         // Get all boards that belong to any of the user's teams
         $teamIds = $user->allTeams()->pluck('id');
-
+        $this->breadcrumbs = [
+            ['icon' => 's-home', 'link' => route('dashboard')],
+            ['label' => 'Boards'],
+        ];
         $this->boards = Board::whereIn('team_id', $teamIds)->with('team')->get();
     }
 

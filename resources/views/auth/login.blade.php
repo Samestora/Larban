@@ -31,7 +31,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    <a class="underline text-sm  dark: hover:text-primary-900 dark:hover: rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-basey-800"
                         href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
@@ -45,10 +45,10 @@
 
         {{-- Not registered link --}}
         <div class="mt-6 text-center">
-            <p class="text-sm text-gray-600 dark:text-gray-400">
+            <p class="text-sm  dark:">
                 {{ __('Not registered?') }}
                 <a href="{{ route('register') }}"
-                    class="text-gray-600 underline dark:text-gray-400 dark:hover:text-gray-100">
+                    class="text-primary-600 underline dark:text-primary-400 dark:hover:text-primary-100">
                     {{ __('Create an account') }}
                 </a>
             </p>
