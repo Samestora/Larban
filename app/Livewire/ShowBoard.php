@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Board;
 use App\Models\Card;
 use App\Models\Column;
+use App\Models\Team;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -12,10 +13,12 @@ class ShowBoard extends Component
 {
     public Board $board;
     public $columns;
+    public $breadcrumbs;
 
     protected $listeners = [
         'updateCardPositions',
         'updateColumnPositions',
+        'cardDelete'
     ];
 
     public function mount(Board $board)
@@ -26,7 +29,23 @@ class ShowBoard extends Component
             abort(403);
         }
         $this->board = $board;
+        $this->breadcrumbs = [
+            ['icon' => 's-home', 'link' => route('dashboard')],
+            ['label' => 'Boards', 'link' => route('boards.show')],
+            ['label' => Team::findOrFail($board->team_id)->name],
+            ['label' => $board->name],
+        ];
         $this->loadColumns();
+    }
+
+    public function removeCard(int $cardId, int $columnId)
+    {
+        $column = $this->board->columns->firstWhere('id', $columnId);
+
+        if ($column) {
+
+            $column->cards = $column->cards->reject(fn($card) => $card->id === $cardId);
+        }
     }
 
     public function loadColumns()

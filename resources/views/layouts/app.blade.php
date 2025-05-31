@@ -19,16 +19,15 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-base-200 ">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
+    <div class="min-h-screen flex flex-col">
         @livewire('navigation-menu')
-
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-white dark:bg-gray-800 shadow">
+            <header class="bg-base-100 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
@@ -45,8 +44,8 @@
 
     <x-mary-toast />
     @stack('modals')
-    @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    @livewireScripts
 </body>
 
 </html>

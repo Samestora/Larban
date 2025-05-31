@@ -1,30 +1,38 @@
-<x-mary-modal wire:model="show" :title="$card?->title ?? 'Card Details'" class="backdrop-blur">
-    @if ($card)
-        @if (!$editing)
-            <div>
-                <p class="text-gray-700 dark:text-gray-300">{{ $card->description }}</p>
-                <p class="text-sm text-gray-500 mt-2">
-                    @if ($card->due_date)
-                        Due: {{ \Carbon\Carbon::parse($card->due_date)->format('F j, Y') }}
-                    @endif
-                </p>
-            </div>
-        @else
-            <div class="space-y-4">
-                <x-mary-input label="Title" wire:model.defer="card.title" />
-                <x-mary-textarea label="Description" wire:model.defer="card.description" />
-                <x-mary-input type="date" label="Due Date" wire:model.defer="card.due_date" />
-            </div>
+<x-mary-form wire:submit.prevent="updateCard">
+    <x-mary-modal wire:model="showCardDetail" :title="$card?->title" class="backdrop-blur" persistent>
+        @if ($card)
+            @if ($editing)
+                <div class="space-y-4">
+                    <x-mary-input label="Title" wire:model.defer="title" required />
+                    <x-mary-textarea rows="5" label="Description" wire:model.defer="description" />
+                    <x-mary-input type="date" label="Due Date" wire:model.defer="due_date" />
+                </div>
+            @else
+                <div>
+                    <p class="text-lg my-2">{{ $card->description }}</p>
+                    <p class="text-xs mt-1">
+                        @if ($card->due_date)
+                            Due: {{ $card->due_date }}
+                        @endif
+                    </p>
+                    <p class="text-xs mt-1">Created: {{ $card->created_at->format('M d, Y H:i') }}
+                    </p>
+                </div>
+            @endif
         @endif
-    @endif
 
-    <x-slot:actions>
-        @if ($editing)
-            <x-mary-button label="Save" wire:click="updateCard" color="success" />
-            <x-mary-button label="Cancel" wire:click="$set('editing', false)" />
-        @else
-            <x-mary-button label="Edit" wire:click="$set('editing', true)" />
-        @endif
-        <x-mary-button label="Close" wire:click="$set('show', false)" color="secondary" />
-    </x-slot:actions>
-</x-mary-modal>
+        <x-slot:actions class="flex flex-row justify-evenly">
+            <x-mary-button label="Delete" wire:click="deleteCard"
+                wire:confirm="Are you sure you want to delete this card? This action cannot be undone."
+                class="btn btn-error" />
+            @if ($editing)
+                <x-mary-button label="Cancel" wire:click="$set('editing', false)"
+                    wire:click="$set('showCardDetail', false )" class="btn btn-warning" />
+                <x-mary-button type="submit" label="Save" class="btn btn-success" />
+            @else
+                <x-mary-button label="Close" wire:click="$set('showCardDetail', false)" class="btn btn-warning" />
+                <x-mary-button label="Edit" wire:click="$set('editing', true)" class="btn btn-success" />
+            @endif
+        </x-slot:actions>
+    </x-mary-modal>
+</x-mary-form>
