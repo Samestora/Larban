@@ -22,8 +22,9 @@
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen bg-gray-100 dark:bg-gray-900 flex flex-col">
         @livewire('navigation-menu')
+
 
         <!-- Page Heading -->
         @if (isset($header))
@@ -36,10 +37,13 @@
 
         <!-- Page Content -->
         <main>
-            {{ $slot }}
+            <div>
+                {{ $slot }}
+            </div>
         </main>
     </div>
 
+    <x-mary-toast />
     @stack('modals')
     @livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>

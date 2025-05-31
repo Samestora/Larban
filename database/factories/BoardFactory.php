@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -21,6 +22,7 @@ class BoardFactory extends Factory
             'name' => $this->faker->words(2, true),
             'description' => $this->faker->sentence,
             'thumbnail_path' => null,
+            'team_id' => Team::Factory(),
         ];
     }
 }

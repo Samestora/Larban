@@ -1,0 +1,33 @@
+<?php
+
+namespace App\Livewire;
+
+use App\Models\Board;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use Livewire\Component;
+
+class ShowBoards extends Component
+{
+    public $boards;
+    public $teams;
+
+    public function mount(): void
+    {
+        /** @var \App\Models\User $user **/
+        $user = Auth::user();
+
+        // Get all teams the user belongs to
+        $this->teams = $user->allTeams();
+
+        // Get all boards that belong to any of the user's teams
+        $teamIds = $user->allTeams()->pluck('id');
+
+        $this->boards = Board::whereIn('team_id', $teamIds)->with('team')->get();
+    }
+
+    public function render(): View
+    {
+        return view('boards.show');
+    }
+}

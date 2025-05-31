@@ -10,23 +10,20 @@
     @if (auth()->user()->hasVerifiedEmail())
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="current_password" value="{{ __('Current Password') }}" />
-                <x-input id="current_password" type="password" class="mt-1 block w-full"
-                    wire:model="state.current_password" autocomplete="current-password" />
+                <x-mary-input label="Current Password" id="current_password" type="password" class="mt-1  w-full"
+                    wire:model="state.current_password" required autocomplete="current-password" />
                 <x-input-error for="current_password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="password" value="{{ __('New Password') }}" />
-                <x-input id="password" type="password" class="mt-1 block w-full" wire:model="state.password"
-                    autocomplete="new-password" />
+                <x-mary-input label="New Password" id="password" type="password" class="mt-1  w-full"
+                    wire:model="state.password" required autocomplete="new-password" />
                 <x-input-error for="password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" type="password" class="mt-1 block w-full"
-                    wire:model="state.password_confirmation" autocomplete="new-password" />
+                <x-mary-input label="Confirm Password" id="password_confirmation" type="password" class="mt-1  w-full"
+                    wire:model="state.password_confirmation" required autocomplete="new-password" />
                 <x-input-error for="password_confirmation" class="mt-2" />
             </div>
 
@@ -40,26 +37,26 @@
                 {{ __('Saved.') }}
             </x-action-message>
 
-            <x-button>
+            <x-mary-button icon="o-check">
                 {{ __('Save') }}
-            </x-button>
+            </x-mary-button>
         </x-slot>
     @else
         <x-slot name="form">
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="current_password" value="{{ __('Current Password') }}" />
-                <x-input id="current_password" type="password" class="mt-1 block w-full" readonly disabled />
+                <x-mary-input label="Current Password" id="current_password" type="password" class="mt-1  w-full"
+                    readonly disabled />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="password" value="{{ __('New Password') }}" />
-                <x-input id="password" type="password" class="mt-1 block w-full" readonly disabled />
+
+                <x-mary-input label="Password" id="password" type="password" class="mt-1  w-full" readonly disabled />
                 <x-input-error for="password" class="mt-2" />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" type="password" class="mt-1 block w-full" readonly disabled />
+                <x-mary-input label="Password Confirmation" id="password_confirmation" type="password" class="mt-1"
+                    readonly disabled />
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -67,9 +64,9 @@
         </x-slot>
 
         <x-slot name="actions">
-            <x-button disabled>
+            <x-mary-button disabled>
                 {{ __('Verify your email first') }}
-            </x-button>
+            </x-mary-button>
         </x-slot>
     @endif
 </x-form-section>

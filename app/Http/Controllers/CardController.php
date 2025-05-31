@@ -7,39 +7,7 @@ use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
-    public function show(Card $card)
-    {
-        return response()->json([
-            'title' => $card->title,
-            'description' => $card->description,
-        ]);
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string|max:255',
-            'column_id' => 'required|exists:columns,id',
-        ]);
-
-
-        $position = Card::where('column_id', $request->column_id)->max('position') + 1;
-
-        $data = [
-            'title' => $request->title,
-            'column_id' => $request->column_id,
-            'position' => $position,
-        ];
-
-        if ($request->filled('description')) {
-            $data['description'] = $request->description;
-        }
-
-        Card::create($data);
-
-        return back();
-    }
+    public function update(Request $request) {}
 
     public function sort(Request $request)
     {
@@ -48,13 +16,13 @@ class CardController extends Controller
             'card_ids' => 'required|array',
         ]);
 
-        foreach ($request->card_ids as $index => $cardId) {
+        foreach ($request->card_ids as $position => $cardId) {
             Card::where('id', $cardId)->update([
                 'column_id' => $request->column_id,
-                'position' => $index,
+                'position' => $position + 1,
             ]);
         }
 
-        return response()->json(['status' => 'ok']);
+        return response()->json(['message' => 'Cards reordered']);
     }
 }
