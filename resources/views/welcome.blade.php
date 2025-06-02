@@ -1,25 +1,78 @@
 @php
     $slides = [
         [
-            'image' => 'https://picsum.photos/800/400',
-            'title' => 'Front end developers',
-            'description' => 'We love last week frameworks.',
-            'url' => '/docs/installation',
-            'urlText' => 'Get started',
+            'image' => 'https://picsum.photos/800/400?random=1',
+            'title' => 'Organize Your Tasks',
+            'description' => 'Transform chaos into clarity with our intuitive Kanban boards.',
         ],
         [
-            'image' => 'https://picsum.photos/800/400',
-            'title' => 'Full stack developers',
-            'description' => 'Where burnout is just a fancy term for Tuesday.',
+            'image' => 'https://picsum.photos/800/400?random=2',
+            'title' => 'Collaborate Seamlessly',
+            'description' => 'Work together with your team in real-time, anywhere.',
         ],
         [
-            'image' => 'https://picsum.photos/800/400',
-            'url' => '/docs/installation',
-            'urlText' => 'Let`s go!',
+            'image' => 'https://picsum.photos/800/400?random=3',
+            'title' => 'Track Progress Easily',
+            'description' => 'Visualize your workflow and boost productivity.',
         ],
         [
-            'image' => 'https://picsum.photos/800/400',
-            'url' => '/docs/installation',
+            'image' => 'https://picsum.photos/800/400?random=4',
+            'title' => 'Achieve More Together',
+            'description' => 'From planning to completion, manage everything efficiently.',
+        ],
+    ];
+    
+    $features = [
+        [
+            'icon' => '📋',
+            'title' => 'Visual Task Management',
+            'description' => 'Drag and drop tasks between columns to track progress visually.'
+        ],
+        [
+            'icon' => '👥',
+            'title' => 'Team Collaboration',
+            'description' => 'Invite team members and work together in real-time.'
+        ],
+        [
+            'icon' => '📊',
+            'title' => 'Progress Tracking',
+            'description' => 'Monitor project progress with detailed analytics and reports.'
+        ],
+        [
+            'icon' => '🔄',
+            'title' => 'Workflow Automation',
+            'description' => 'Automate repetitive tasks and focus on what matters most.'
+        ],
+        [
+            'icon' => '📱',
+            'title' => 'Mobile Responsive',
+            'description' => 'Access your boards anywhere, anytime, on any device.'
+        ],
+        [
+            'icon' => '🔐',
+            'title' => 'Secure & Private',
+            'description' => 'Your data is protected with enterprise-grade security.'
+        ],
+    ];
+
+    $testimonials = [
+        [
+            'name' => 'Putranto Surya',
+            'role' => 'Project Manager',
+            'company' => 'TechCorp',
+            'message' => 'Larban transformed how our team manages projects. The visual workflow is game-changing!'
+        ],
+        [
+            'name' => 'Rifu Kanban',
+            'role' => 'Development Lead',
+            'company' => 'Startup SRT',
+            'message' => 'Simple yet powerful, our productivity increased by 40% since using Larban.'
+        ],
+        [
+            'name' => 'Dedep Flow',
+            'role' => 'Marketing Director',
+            'company' => 'Creative Agency',
+            'message' => 'The best Kanban tool we have used. Clean interface and great collaboration features.'
         ],
     ];
 @endphp
@@ -82,13 +135,85 @@
             Welcome to {{ config('app.name') }}, a powerful yet simple digital Kanban tool to manage your tasks,
             projects, and teams — all in one visual space.
         </p>
+        
         @if (Route::has('register'))
             <a href="{{ route('register') }}"
                 class="btn btn-primary px-10 py-5 font-bold rounded-xl shadow-xl transition transform hover:scale-105 hover:shadow-primary/50 focus:outline-none focus:ring-4 focus:ring-primary dark:focus:ring-primary">
                 Get Started for Free
             </a>
         @endif
+            <a href="#features" 
+                class="btn btn-primary px-10 py-5 font-bold rounded-xl shadow-xl transition transform hover:scale-105 hover:shadow-primary/50 focus:outline-none focus:ring-4 focus:ring-primary dark:focus:ring-primary">
+                Learn More
+            </a>
+
+        <div class="flex justify-center items-center space-x-4 mt-4 mx-auto">
+            <div class="text-center">
+                <div class="text-xl font-bold counter" data-target="10000" data-suffix="K+">0</div>
+                <div class="text-sm opacity-80">Active Users</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xl font-bold counter" data-target="50000" data-suffix="K+">0</div>
+                <div class="text-sm opacity-80">Tasks Completed</div>
+            </div>
+            <div class="text-center">
+                <div class="text-xl font-bold counter" data-target="99.9" data-suffix="%">0</div>
+                <div class="text-sm opacity-80">Uptime</div>
+            </div>
+        </div>
     </main>
+
+    <section id="features" class="w-full max-w-6xl px-6 lg:px-10 mb-16">
+        <div class="text-center mb-12">
+            <h3 class="text-4xl font-extrabold leading-tight text-primary-900 dark:">Why Choose Larban?</h3>
+            <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                Discover the features that make Larban the perfect choice for your team's productivity.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach($features as $feature)
+                <div class="feature-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="text-4xl mb-4">{{ $feature['icon'] }}</div>
+                    <h4 class="text-xl font-semibold text-primary dark:text-primary mb-3">{{ $feature['title'] }}</h4>
+                    <p class="text-gray-600 dark:text-gray-300">{{ $feature['description'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    <section class="w-full max-w-6xl px-6 lg:px-10 mb-16">
+        <div class="text-center mb-12">
+            <h3 class="text-4xl font-extrabold leading-tight text-primary-900 dark:">What Our Users Say</h3>
+            <p class="text-xl text-gray-600 dark:text-gray-300">
+                Join thousands of satisfied users who have transformed their workflow with Larban.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @foreach($testimonials as $testimonial)
+                <div class="testimonial-card bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold">
+                            {{ substr($testimonial['name'], 0, 1) }}
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-semibold text-primary dark:text-primary">{{ $testimonial['name'] }}</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-400">{{ $testimonial['role'] }} at {{ $testimonial['company'] }}</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">"{{ $testimonial['message'] }}"</p>
+                    <div class="flex text-yellow-400 mt-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
 
     <section class="w-full max-w-5xl px-6 lg:px-10 mb-16">
         <x-mary-carousel interval="3000" :slides="$slides" autoplay />
@@ -99,6 +224,7 @@
     </footer>
 
     @livewireScripts
+
 </body>
 
 </html>
