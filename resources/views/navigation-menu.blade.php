@@ -22,7 +22,7 @@
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Theme Toggle -->
-                <x-mary-theme-toggle class="btn btn-circle btn-ghost" />
+                <x-mary-theme-toggle class="btn btn-circle btn-ghost" lightTheme="Bones" darkTheme="Moonlight" />
 
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -83,7 +83,7 @@
                                             ->map(fn($part) => strtoupper($part[0]))
                                             ->join('');
                                     @endphp
-                                    <x-mary-avatar :image="$user->profile_photo_path ?: null" :placeholder="$initials" :title="$user->name"
+                                    <x-mary-avatar :image="Auth::user()->profile_photo_url" :placeholder="$initials" :title="$user->name"
                                         :subtitle="$user->email" class="!w-10" />
                                 </button>
                             @else
