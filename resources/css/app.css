@@ -3,6 +3,7 @@
 /* @plugin '@tailwindcss/forms'; */
 @plugin '@tailwindcss/typography';
 
+@source '../resources/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../vendor/laravel/jetstream/**/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -11,6 +12,25 @@
     --font-sans: Figtree, ui-sans-serif, system-ui, sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
+}
+
+/*
+    https://github.com/tailwindlabs/tailwindcss/discussions/2394
+    https://github.com/tailwindlabs/tailwindcss/pull/5732
+*/
+@layer utilities {
+
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
 }
 
 /*
@@ -46,7 +66,79 @@
 
 /** daisyUI */
 @plugin "daisyui" {
-    themes: light --default, halloween --prefersdark ;
+    themes: light --default, dark --prefersdark, Bones, Moonlight;
+}
+
+/* Custom Dark */
+@plugin "daisyui/theme" {
+    name: "Moonlight";
+    default: false;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(14% 0.005 285.823);
+    --color-base-200: oklch(21% 0.006 285.885);
+    --color-base-300: oklch(27% 0.006 286.033);
+    --color-base-content: oklch(96% 0.001 286.375);
+    --color-primary: oklch(52% 0.105 223.128);
+    --color-primary-content: oklch(98% 0.014 180.72);
+    --color-secondary: oklch(55% 0.135 66.442);
+    --color-secondary-content: oklch(98% 0.026 102.212);
+    --color-accent: oklch(54% 0.281 293.009);
+    --color-accent-content: oklch(96% 0.016 293.756);
+    --color-neutral: oklch(27% 0.006 286.033);
+    --color-neutral-content: oklch(98% 0 0);
+    --color-info: oklch(52% 0.105 223.128);
+    --color-info-content: oklch(98% 0.019 200.873);
+    --color-success: oklch(50% 0.118 165.612);
+    --color-success-content: oklch(97% 0.021 166.113);
+    --color-warning: oklch(79% 0.184 86.047);
+    --color-warning-content: oklch(98% 0.026 102.212);
+    --color-error: oklch(51% 0.222 16.935);
+    --color-error-content: oklch(96% 0.015 12.422);
+    --radius-selector: 0.25rem;
+    --radius-field: 0.5rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 2px;
+    --depth: 1;
+    --noise: 1;
+}
+
+/* Custom Light */
+@plugin "daisyui/theme" {
+    name: "Bones";
+    default: false;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-base-100: oklch(92% 0 0);
+    --color-base-200: oklch(87% 0 0);
+    --color-base-300: oklch(70% 0 0);
+    --color-base-content: oklch(14% 0 0);
+    --color-primary: oklch(50% 0.134 242.749);
+    --color-primary-content: oklch(97% 0.013 236.62);
+    --color-secondary: oklch(55% 0.046 257.417);
+    --color-secondary-content: oklch(98% 0.003 247.858);
+    --color-accent: oklch(51% 0.096 186.391);
+    --color-accent-content: oklch(98% 0.014 180.72);
+    --color-neutral: oklch(14% 0.004 49.25);
+    --color-neutral-content: oklch(98% 0.001 106.423);
+    --color-info: oklch(52% 0.105 223.128);
+    --color-info-content: oklch(98% 0.019 200.873);
+    --color-success: oklch(52% 0.154 150.069);
+    --color-success-content: oklch(98% 0.018 155.826);
+    --color-warning: oklch(55% 0.135 66.442);
+    --color-warning-content: oklch(98% 0.026 102.212);
+    --color-error: oklch(50% 0.213 27.518);
+    --color-error-content: oklch(97% 0.013 17.38);
+    --radius-selector: 0.25rem;
+    --radius-field: 0.5rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 2px;
+    --depth: 1;
+    --noise: 1;
 }
 
 /* maryUI */

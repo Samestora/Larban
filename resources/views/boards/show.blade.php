@@ -10,23 +10,20 @@
                     @forelse ($boards as $board)
                         <a href="{{ route('board.show', [$board]) }}" wire:key="board-{{ $board->id }}">
                             <div
-                                class="bg-primary dark:bg-primary shadow rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                                <div class="p-4 flex flex-col justify-around text-center">
-                                    <h3 class="text-2xl text-base-300 dark:text-base-300 font-bold">
-                                        {{ $board->name }}
-                                    </h3>
-                                    <h3 class="text-sm text-base-300 dark:text-base-300 font-semibold">Team:
-                                        {{ $board->team->name }}</h3>
-                                    <p class="text-sm text-base-300 dark:text-base-300 mt-1">
+                                class="bg-primary text-base-100 shadow rounded-lg hover:shadow-lg transition-shadow duration-200">
+                                <div class="p-4 flex flex-col justify-around text-center space-y-1">
+                                    <h3 class="text-2xl font-bold text-base-100">{{ $board->name }}</h3>
+                                    <h4 class="text-sm font-semibold text-base-100">Team: {{ $board->team->name }}</h4>
+                                    <p class="text-sm text-base-100 opacity-90">
                                         {{ Str::limit($board->description, 100) }}
                                     </p>
                                 </div>
                             </div>
                         </a>
                     @empty
-                        <div class="mt-10 px-6 lg:px-8 text-center text-gray-600 dark:text-gray-300">
-                            <p>You have no board yet. <a href="#" class="text-indigo-600 hover:underline">Create
-                                    one now.</a>
+                        <div class="mt-10 px-6 lg:px-8 text-center text-base-content opacity-75">
+                            <p>You have no board yet.
+                                <a href="#" class="text-primary hover:underline font-semibold">Create one now.</a>
                             </p>
                         </div>
                     @endforelse

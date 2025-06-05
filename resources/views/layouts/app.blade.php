@@ -11,16 +11,16 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- Styles -->
+    <!-- Livewire Styles -->
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased bg-base-200 ">
+<body class="font-sans antialiased bg-base-300 text-base-content dark:bg-base-300 dark:text-base-content">
     <x-banner />
 
     <div class="min-h-screen flex flex-col">
@@ -28,7 +28,7 @@
 
         <!-- Page Heading -->
         @if (isset($header))
-            <header class="bg-base-100 shadow">
+            <header class="bg-base-100 dark:bg-base-200 shadow">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
