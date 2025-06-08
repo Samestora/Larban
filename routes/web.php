@@ -13,6 +13,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/stats', function () {
+        return view('stats');
+    })->name('stats.show');
 });
 // Overwrite a bit for the redirection
 use App\Http\Controllers\Auth\RegisteredUserController;
