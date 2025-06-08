@@ -51,7 +51,7 @@
 <body class="bg-base-100 dark:bg-base-300 text-base-content font-sans antialiased">
     <!-- HEADER -->
     <header class="w-full">
-        <div class="w-full max-w-7xl mx-auto px-6 lg:px-10 py-6 flex justify-between items-center">
+        <div class="w-full max-w-7xl mx-auto px-6 lg:px-10 py-10 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-primary">{{ config('app.name', 'Larban') }}</h1>
             @if (Route::has('login'))
                 <nav class="flex items-center gap-4">
@@ -70,7 +70,7 @@
     </header>
 
     <!-- HERO -->
-    <section class="w-full max-w-6xl mx-auto px-6 lg:px-10 py-16 text-center space-y-6">
+    <section class="w-full max-w-6xl mx-auto px-6 lg:px-10 py-20 text-center space-y-6">
         <span class="text-sm font-medium text-base-content/70 uppercase tracking-widest">Create Fast</span>
         <h2 class="text-4xl lg:text-5xl font-extrabold leading-tight text-primary">
             One tool to manage task and your team
@@ -165,6 +165,35 @@
                     <h4 class="text-xl font-semibold text-primary mb-2">Task management</h4>
                     <p class="text-base-content  mb-6">Discuss contract queries, manage tasks, secure
                         approvals, track progress in the workspace.</p>
+
+                    <div class="space-y-4">
+                        <div class="bg-base-200 p-4 rounded shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="https://i.pravatar.cc/30?u=100" class="h-8 w-8 rounded-full">
+                                <div>
+                                    <div class="text-sm font-semibold">Bill Sanders</div>
+                                    <div class="text-sm text-base-content/80">Hello <strong>@Ragip Diller</strong>,
+                                        could you sign the contract before March 12? 🙏</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-base-200 p-4 rounded shadow-sm">
+                            <div class="flex items-center gap-2">
+                                <img src="https://i.pravatar.cc/30?u=200" class="h-8 w-8 rounded-full">
+                                <div>
+                                    <div class="text-sm font-semibold">Jane Cooper</div>
+                                    <div class="text-sm text-base-content/80">Uploaded new contract</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calendar -->
+                <div class="bg-base-100 rounded-xl shadow p-8">
+                    <h4 class="text-xl font-semibold text-primary mb-2">Smart Schedule</h4>
+                    <p class="text-base-content  mb-6">Making plans ahead of time together with your team has never been
+                        this easy.</p>
 
                     <div class="space-y-4">
                         <div class="bg-base-200 p-4 rounded shadow-sm">
