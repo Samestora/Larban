@@ -11,8 +11,9 @@
     <nav class="space-y-1">
         @php
             $links = [
-                ['route' => 'dashboard', 'label' => 'Dashboard', 'icon' => 'fa-chart-line'],
+                ['route' => 'dashboard', 'label' => 'Dashboard', 'icon' => 'fa-table'],
                 ['route' => 'boards.show', 'label' => 'Boards', 'icon' => 'fa-columns'],
+                ['route' => 'stats.show', 'label' => 'Stats', 'icon' => 'fa-chart-line'],
             ];
         @endphp
 
