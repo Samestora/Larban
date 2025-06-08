@@ -2,36 +2,40 @@
     <x-mary-breadcrumbs :items="$breadcrumbs" link-item-class="text-sm font-bold" />
 </x-slot>
 
-<div class="py-12">
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-base-300 dark:bg-base overflow-hidden shadow-xl sm:rounded-lg">
-            <div class="p-6 lg:p-8 bg-base-100 dark:bg-base-100 border-b border-base-300 dark:border-base-300">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    @forelse ($boards as $board)
-                        <a href="{{ route('board.show', [$board]) }}" wire:key="board-{{ $board->id }}">
-                            <div
-                                class="bg-primary dark:bg-primary shadow rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200">
-                                <div class="p-4 flex flex-col justify-around text-center">
-                                    <h3 class="text-2xl text-base-300 dark:text-base-300 font-bold">
-                                        {{ $board->name }}
-                                    </h3>
-                                    <h3 class="text-sm text-base-300 dark:text-base-300 font-semibold">Team:
-                                        {{ $board->team->name }}</h3>
-                                    <p class="text-sm text-base-300 dark:text-base-300 mt-1">
-                                        {{ Str::limit($board->description, 100) }}
-                                    </p>
-                                </div>
+@php
+    $groupedBoards = $boards->groupBy('team.name');
+@endphp
+
+<div class="space-y-6">
+    {{-- Section Title --}}
+    <div class="p-6 bg-base-100 border border-base-300 rounded-xl shadow">
+        <h2 class="text-2xl font-bold text-primary mb-1">Your Boards</h2>
+        <p class="text-base-content">Here’s a quick view of all your current boards grouped by team.</p>
+    </div>
+
+    {{-- Boards Grouped by Team --}}
+    @forelse ($groupedBoards as $teamName => $teamBoards)
+        <div class="p-6 bg-base-200 border border-base-200 rounded-xl shadow space-y-4">
+            <h3 class="text-xl font-semibold text-base-content">{{ $teamName }}</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach ($teamBoards as $board)
+                    <a href="{{ route('board.show', [$board]) }}" wire:key="board-{{ $board->id }}">
+                        <div
+                            class="bg-base-100 text-base-content rounded-xl shadow-md hover:shadow-xl transition duration-200">
+                            <div class="p-5 space-y-2 text-center">
+                                <h4 class="text-lg font-bold text-primary">{{ $board->name }}</h4>
+                                <p class="text-sm opacity-90">{{ Str::limit($board->description, 100) }}</p>
                             </div>
-                        </a>
-                    @empty
-                        <div class="mt-10 px-6 lg:px-8 text-center text-gray-600 dark:text-gray-300">
-                            <p>You have no board yet. <a href="#" class="text-indigo-600 hover:underline">Create
-                                    one now.</a>
-                            </p>
                         </div>
-                    @endforelse
-                </div>
+                    </a>
+                @endforeach
             </div>
         </div>
-    </div>
+    @empty
+        <div class="text-center text-base-content opacity-75">
+            <p>You have no boards yet.
+                <a href="#" class="text-primary hover:underline font-semibold">Create one now.</a>
+            </p>
+        </div>
+    @endforelse
 </div>

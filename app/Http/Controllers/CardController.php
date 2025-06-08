@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class CardController extends Controller
 {
-    public function update(Request $request) {}
-
     public function sort(Request $request)
     {
         $request->validate([
