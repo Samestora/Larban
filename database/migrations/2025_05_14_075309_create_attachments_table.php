@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('card_id')->constrained()->onDelete('cascade');
             $table->string('filename');
-            $table->string('url'); // or use Laravel's Storage
+            $table->string('file_path');
             $table->timestamps();
         });
     }
