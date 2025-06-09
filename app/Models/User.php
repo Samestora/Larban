@@ -68,6 +68,19 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
+    public function assignedCards()
+    {
+        return $this->belongsToMany(Card::class);
+    }
+
+    public function getAvatarUrlAttribute(): string
+    {
+        return $this->avatar
+            ? asset('storage/avatars/' . $this->avatar)
+            : 'https://ui-avatars.com/api/?name=' . urlencode($this->name);
+    }
+
+
     public function cards(): HasMany
     {
         return $this->hasMany(Card::class, 'assignee_id');

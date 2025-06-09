@@ -22,8 +22,12 @@ class CardSeeder extends Seeder
         Column::all()->each(function ($column) use ($users) {
             Card::factory(5)->create([
                 'column_id' => $column->id,
-                'assignee_id' => $users->random()->id,
-            ]);
+            ])->each(function ($card) use ($users) {
+                // Assign random users to each card
+                $card->assignees()->attach(
+                    $users->random(rand(1, 2))->pluck('id')->toArray()
+                );
+            });
         });
     }
 }

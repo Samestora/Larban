@@ -13,9 +13,9 @@
         </div>
 
         <div class="mt-5">
-            <x-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+            <x-mary-button class="btn btn-error" wire:click="confirmUserDeletion" wire:loading.attr="disabled">
                 {{ __('Delete Account') }}
-            </x-danger-button>
+            </x-mary-button>
         </div>
 
         <!-- Delete User Confirmation Modal -->
@@ -29,7 +29,7 @@
 
                 <div class="mt-4" x-data="{}"
                     x-on:confirming-delete-user.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-mary-input type="password" class="mt-1 block w-3/4" autocomplete="current-password"
+                    <x-mary-input type="password" class="mt-1 w-3/4" autocomplete="current-password"
                         placeholder="{{ __('Password') }}" x-ref="password" wire:model="password"
                         wire:keydown.enter="deleteUser" />
 

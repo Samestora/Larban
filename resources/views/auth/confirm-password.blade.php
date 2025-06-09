@@ -15,7 +15,7 @@
 
             <div>
                 <x-label for="password" value="{{ __('Password') }}" />
-                <x-mary-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                <x-mary-input id="password" class="mt-1 w-full" type="password" name="password" required
                     autocomplete="current-password" autofocus />
             </div>
 
