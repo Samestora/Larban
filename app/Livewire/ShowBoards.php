@@ -13,7 +13,7 @@ class ShowBoards extends Component
     public $teams;
     public $breadcrumbs;
 
-    public function mount(): void
+    public function loadBoards(): void
     {
         /** @var \App\Models\User $user **/
         $user = Auth::user();
@@ -28,6 +28,17 @@ class ShowBoards extends Component
             ['label' => 'Boards'],
         ];
         $this->boards = Board::whereIn('team_id', $teamIds)->with('team')->get();
+    }
+
+    public function mount(): void
+    {
+        $this->loadBoards();
+    }
+
+    #[\Livewire\Attributes\On('refresh-board')]
+    public function refreshBoards()
+    {
+        $this->loadBoards();
     }
 
     public function render(): View
