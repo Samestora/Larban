@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('position')->default(0);
             $table->timestamp('due_date')->nullable();
             $table->foreignId('column_id')->constrained()->onDelete('cascade');
-            $table->foreignId('assignee_id')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamps();
         });
     }

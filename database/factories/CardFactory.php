@@ -24,7 +24,6 @@ class CardFactory extends Factory
             'position' => $this->faker->numberBetween(0, 10),
             'due_date' => now()->addDays(rand(1, 10)),
             'column_id' => Column::factory(),
-            'assignee_id' => User::factory(),
         ];
     }
 }

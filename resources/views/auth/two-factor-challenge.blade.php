@@ -20,13 +20,13 @@
 
                 <div class="mt-4" x-show="! recovery">
                     <x-label for="code" value="{{ __('Code') }}" />
-                    <x-mary-input id="code" class="block mt-1 w-full" type="text" inputmode="numeric"
-                        name="code" autofocus x-ref="code" autocomplete="one-time-code" />
+                    <x-mary-input id="code" class="mt-1 w-full" type="text" inputmode="numeric" name="code"
+                        autofocus x-ref="code" autocomplete="one-time-code" />
                 </div>
 
                 <div class="mt-4" x-cloak x-show="recovery">
                     <x-label for="recovery_code" value="{{ __('Recovery Code') }}" />
-                    <x-mary-input id="recovery_code" class="block mt-1 w-full" type="text" name="recovery_code"
+                    <x-mary-input id="recovery_code" class="mt-1 w-full" type="text" name="recovery_code"
                         x-ref="recovery_code" autocomplete="one-time-code" />
                 </div>
 

@@ -21,6 +21,10 @@
                         <x-mary-textarea rows="5" label="Description" wire:model.defer="description"
                             placeholder="Card details, notes, etc." />
                         <x-mary-input type="date" label="Due Date" wire:model.defer="due_date" />
+
+                        <x-mary-choices label="Assign Users" wire:model="assignees" :options="$assignableUsers"
+                            option-avatar="avatar_url" multiple clearable hint="You can select more than one user" />
+
                         <div class="flex justify-end space-x-3 pt-2">
                             <x-mary-button type="submit" label="Save" class="btn-success" />
                             <x-mary-button label="Cancel" @click.prevent="editing = false" class="btn-outline" />
@@ -34,6 +38,20 @@
                             <p class="text-sm text-primary"><strong>Due:</strong> {{ $card->due_date }}</p>
                         @endif
                         <p class="text-xs opacity-70">Created: {{ $card->created_at->format('M d, Y H:i') }}</p>
+                        <p class="text-xs">
+                            Assigned To:
+                            @if ($card->assignees->isNotEmpty())
+                                @foreach ($card->assignees as $user)
+                                    <span class="inline-flex items-center space-x-1 me-2">
+                                        <img src="{{ asset($user->profile_photo_url) }}" class="w-5 h-5 rounded-full"
+                                            alt="{{ $user->name }}">
+                                        <span>{{ $user->name }}</span>
+                                    </span>
+                                @endforeach
+                            @else
+                                <span class="text-gray-500 italic">Unassigned</span>
+                            @endif
+                        </p>
 
                         <div class="flex justify-end space-x-3 pt-2">
                             <x-mary-button label="Edit" @click="editing = true" class="btn-success" />

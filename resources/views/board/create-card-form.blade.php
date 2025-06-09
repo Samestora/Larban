@@ -26,9 +26,13 @@
 
                 <x-mary-input label="Title" wire:model.defer="title" placeholder="e.g. Meeting" name="title"
                     required />
-
                 <x-mary-input label="Description" wire:model.defer="description" placeholder="e.g. Meeting with client"
                     name="description" />
+                <x-mary-input type="date" label="Due Date" wire:model.defer="due_date" placeholder="20 May 2069"
+                    name="due_date" />
+
+                <x-mary-choices label="Assign Users" wire:model="assignees" :options="$assignableUsers" option-avatar="avatar_url"
+                    multiple clearable hint="You can select more than one user" />
 
                 {{-- Form Actions --}}
                 <div class="flex justify-end space-x-3 pt-2">
