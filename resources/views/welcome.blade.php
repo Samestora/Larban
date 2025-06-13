@@ -57,9 +57,11 @@
                 <nav class="flex items-center gap-4">
                     <x-mary-theme-toggle class="btn btn-circle btn-ghost" lightTheme="Bones" darkTheme="Moonlight" />
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="btn btn-outline btn-primary text-sm">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" wire:navigate.hover
+                            class="btn btn-outline btn-primary text-sm">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm hover:text-primary transition">Log in</a>
+                        <a href="{{ route('login') }}" wire:navigate.hover class="text-sm hover:text-primary transition">Log
+                            in</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-primary text-sm">Start Now</a>
                         @endif

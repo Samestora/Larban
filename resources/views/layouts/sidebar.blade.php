@@ -18,7 +18,7 @@
         @endphp
 
         @foreach ($links as $link)
-            <a href="{{ route($link['route']) }}"
+            <a href="{{ route($link['route']) }}" wire:navigate.hover
                 class="flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-150 {{ request()->routeIs($link['route']) ? 'bg-primary text-primary-content font-semibold shadow-sm' : 'hover:bg-base-200 hover:text-primary text-base-content' }}">
                 <i class="fa-solid {{ $link['icon'] }} w-4"></i>
                 {{ $link['label'] }}

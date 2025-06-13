@@ -46,7 +46,7 @@
                 </p>
 
                 <p class="mt-6 text-sm">
-                    <a href="{{ route('boards.show') }}"
+                    <a href="{{ route('boards.show') }}" wire:navigate.hover
                         class="inline-flex items-center font-semibold text-primary hover:scale-105 transition-transform duration-200">
                         Go to Boards
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-primary">
@@ -63,7 +63,8 @@
                 <div class="flex items-center mb-3">
                     <i class="fas fa-user-cog text-primary text-xl"></i>
                     <h2 class="ms-3 text-xl font-semibold">
-                        <a href="{{ route('profile.show') }}" class="hover:text-primary transition-colors duration-200">
+                        <a href="{{ route('profile.show') }}" wire:navigate.hover
+                            class="hover:text-primary transition-colors duration-200">
                             Manage Profile
                         </a>
                     </h2>
@@ -75,7 +76,7 @@
                 </p>
 
                 <p class="mt-6 text-sm">
-                    <a href="{{ route('profile.show') }}"
+                    <a href="{{ route('profile.show') }}" wire:navigate.hover
                         class="inline-flex items-center font-semibold text-primary hover:scale-105 transition-transform duration-200">
                         Go to Profile
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-primary">
@@ -92,7 +93,7 @@
                 <div class="flex items-center mb-3">
                     <i class="fas fa-users-cog text-primary text-xl"></i>
                     <h2 class="ms-3 text-xl font-semibold">
-                        <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
+                        <a wire:navigate.hover href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
                             class="hover:text-primary transition-colors duration-200">
                             Manage Teams
                         </a>
@@ -105,7 +106,7 @@
                 </p>
 
                 <p class="mt-6 text-sm">
-                    <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
+                    <a wire:navigate.hover href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
                         class="inline-flex items-center font-semibold text-primary hover:scale-105 transition-transform duration-200">
                         Go to Team
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-primary">
@@ -122,7 +123,8 @@
                 <div class="flex items-center mb-3">
                     <i class="fas fa-chart-line text-primary text-xl"></i>
                     <h2 class="ms-3 text-xl font-semibold">
-                        <a href="{{ route('stats.show') }}" class="hover:text-primary transition-colors duration-200">
+                        <a wire:navigate.hover href="{{ route('stats.show') }}"
+                            class="hover:text-primary transition-colors duration-200">
                             Manage Stats
                         </a>
                     </h2>
@@ -133,7 +135,7 @@
                 </p>
 
                 <p class="mt-6 text-sm">
-                    <a href="{{ route('stats.show') }}"
+                    <a wire:navigate.hover href="{{ route('stats.show') }}"
                         class="inline-flex items-center font-semibold text-primary hover:scale-105 transition-transform duration-200">
                         Go to Stats
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-primary">

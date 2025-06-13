@@ -27,7 +27,7 @@
                 @foreach ($teamBoards as $board)
                     <div x-data="{ showEdit: false }" class="relative" wire:key="board-{{ $board->id }}">
                         {{-- Board Card --}}
-                        <a href="{{ route('board.show', [$board]) }}"
+                        <a wire:navigate.hover href="{{ route('board.show', [$board]) }}"
                             class="block bg-base-100 rounded-xl shadow-md hover:shadow-xl transition duration-200 p-5 group">
                             @if ($board->thumbnail_path)
                                 <img src="{{ asset('storage/' . $board->thumbnail_path) }}" alt="Board Thumbnail"
